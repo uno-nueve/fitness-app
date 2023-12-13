@@ -3,7 +3,7 @@ import './App.css'
 import { Link } from 'react-router-dom'
 import { deleteDeck } from './api/deleteDeck'
 import { TDeck, getDecks } from './api/getDecks'
-import { createdDeck } from './api/createDeck'
+import { createDeck } from './api/createDeck'
 
 function App() {
     const [decks, setDecks] = useState<TDeck[]>([])
@@ -11,7 +11,7 @@ function App() {
 
     async function handleCreateDeck(e: React.FormEvent) {
         e.preventDefault()
-        const deck = await createdDeck(title)
+        const deck = await createDeck(title)
         setDecks([...decks, deck])
         setTitle('')
     }
@@ -32,6 +32,7 @@ function App() {
 
     return (
         <div className='App'>
+            <h1>Your Decks</h1>
             <ul className="decks">
                 {
                     decks.map((deck) => (

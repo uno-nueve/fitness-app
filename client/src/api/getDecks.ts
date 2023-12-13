@@ -1,7 +1,8 @@
 import { API_URL } from "./config"
 
 export type TDeck = {
-    title: string,
+    title: string
+    cards: []
     _id: string
 }
 
