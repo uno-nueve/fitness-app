@@ -30,10 +30,16 @@ app.post('/decks', async (req: Request, res: Response) => {
     res.json(createdDeck)
 })
 
-app.get('/decks',async (req: Request, res: Response) => {
+app.get('/decks', async (req: Request, res: Response) => {
     const decks = await Deck.find()
     console.log(decks)
     res.json(decks)
+})
+
+app.delete('/decks/:deckId', async (req: Request, res: Response) =>{
+    const deckId = req.params.deckId
+    const deck = await Deck.findByIdAndDelete(deckId)
+    res.json(deck)
 })
 
 mongoose.connect(process.env.MONGO_URL!).then(() => {
